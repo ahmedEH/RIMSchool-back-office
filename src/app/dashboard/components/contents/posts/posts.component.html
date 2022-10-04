@@ -1,0 +1,21 @@
+
+<div class="container" *ngFor="let post of posts">
+    <div class="card my-3 p-3"  >
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h1 class="card-title text-center">{{post.title}}</h1>
+              <h5 class="card-subtitle mb-2 text-muted text-center">{{post.created_at | date}}</h5>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+              <a class="btn btn-danger" *ngIf="isPermitted(DeletePost) || isAdministrator()" (click)="deletePost(post.id)">Delete</a>
+            </div>
+          </div>
+
+          <h3 class="card-text">{{post.text}}</h3>
+        </div>
+      </div>
+
+</div>

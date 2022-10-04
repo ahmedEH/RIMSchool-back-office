@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <table class="table" >
+        <tr class="header">
+            <th *ngIf="isPermitted(DeleteUser) || isAdministrator()">Action</th>
+            <th *ngFor="let col of headers">{{ col }}</th>
+        </tr>
+        <tr *ngFor="let user of usersVo">
+            <td *ngIf="isPermitted(DeleteUser) || isAdministrator()"><div *ngIf="user.user?.role == 'Simple'"><mat-icon  (click)="deleteUser(user.user?.id)" class="text-danger">delete</mat-icon></div></td>
+            <td>{{ user.user?.login}}</td>
+            <td>{{ user.user?.name}}</td>
+            <td>{{ user.user?.role}}</td>
+            <td>{{ user.user?.state}}<mat-slide-toggle [disabled]="user.user?.role == 'Administrator' || user.user?.role == 'Android'" (toggleChange)="toggle(user.user?.id)" [checked]="user.user?.state == 'Activated'"></mat-slide-toggle></td>
+            <td>{{ user.user?.tel}}</td>
+            <td>{{ user.user?.email}}</td>
+            <td>
+                <ul class="list-group">
+                    <li *ngFor="let permission of user.permissions" class="list-group-item">{{permission.name}}</li>
+                </ul>
+    
+            </td>
+        </tr>
+    
+    </table>
+</div>
+

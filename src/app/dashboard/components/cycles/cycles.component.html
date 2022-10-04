@@ -1,0 +1,24 @@
+<div style="height:100%" class="container">
+    <div class="container" style="display: inline-block;">
+        <h1 class="text-center d-inline">Cycles</h1>
+        <mat-icon *ngIf="isPermitted(AddCycle) || isAdministrator()" style="float: right;"routerLink="/add-cycle">add_circle_outline</mat-icon>
+        
+    </div>
+<div class="container">
+    <br/>
+        <div *ngFor="let cycle of cycles"  class="row border border-success rounded m-3" >
+            <div class="col"><h1 style="font-size:xx-large;" class="text-couleur m-3">{{cycle.name}} </h1> </div>                  
+            <div  class=" col text-right">
+                <div class="comp my-3" style="text-align: right;">
+                    <mat-icon *ngIf="isPermitted(DeleteCycle) || isAdministrator()" (click)="deleteCycle(cycle.id)"class="text-danger mx-3" style="font-size:xx-large;">delete</mat-icon>
+                    <mat-icon *ngIf="isPermitted(UpdateCycle) || isAdministrator()" [routerLink]="['/cycle/edit',cycle.id]" class = "text-primary mx-3" style="font-size:xx-large;">edit</mat-icon>
+                    <mat-icon *ngIf="isPermitted(SeeFaculties) || isAdministrator()" (click)="getFaculties(cycle)" class="text-success mx-3" style="font-size:xx-large;">remove_red_eye</mat-icon>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+  
+    
+</div>

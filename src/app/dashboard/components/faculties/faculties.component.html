@@ -1,0 +1,24 @@
+<div style="height:100%" class="container">
+    <div class="container" style="display: inline-block;">
+        <h1 class="text-center d-inline">Faculties {{cycle?.name}}</h1>
+        <mat-icon style="float: right;" *ngIf="isPermitted(AddFaculty) || isAdministrator()" [routerLink]="['/cycle/add-faculty',cycleId]">add_circle_outline</mat-icon>
+        
+    </div>
+    <div class="container">
+        <br/>
+            <div *ngFor="let faculty of faculties"  class="row border border-success rounded m-3" >
+                <div class="col"><h1 style="font-size:xx-large;" class="text-couleur m-3">{{faculty.name}} </h1> </div>                  
+                <div  class=" col text-right">
+                    <div class="comp my-3" style="text-align: right;">
+                        <mat-icon *ngIf="isPermitted(DeleteFaculty) || isAdministrator()" (click)="deleteFaculty(faculty.id)"class="text-danger mx-3" style="font-size:xx-large;">delete</mat-icon>
+                        <mat-icon *ngIf="isPermitted(UpdateFaculty) || isAdministrator()" [routerLink]="['/faculty/edit',faculty.id]" class = "text-primary mx-3" style="font-size:xx-large;">edit</mat-icon>
+                        <mat-icon *ngIf="isPermitted(SeeLevels) || isAdministrator()" (click)="getLevels(faculty)" class="text-success mx-3" style="font-size:xx-large;">remove_red_eye</mat-icon>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+  
+    
+</div>

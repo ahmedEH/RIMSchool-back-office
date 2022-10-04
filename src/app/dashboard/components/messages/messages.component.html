@@ -1,0 +1,40 @@
+<div *ngIf="isPermitted(SeeMessages) || isAdministrator()" class="container con1">
+    <div #messageBody class="container con2">
+        <div  *ngFor="let message of messages">
+
+            <div  [ngClass]="{'message-blue': message.user?.role == 'Android','message-orange':message.user?.role == 'Administrator' || message.user?.role =='Simple'}">
+                <p class="message-content">{{message.text}}</p>
+                <div class=" d-inline message-timestamp-left">{{message.created_at | date: 'short'}}</div>
+                <div *ngIf="isPermitted(DeleteMessage) || isAdministrator()" class="delete"><mat-icon (click)="deleteMessage(message.id)" class="text-danger">delete</mat-icon></div>
+            </div>
+            
+
+        </div>
+
+        
+
+    </div>
+    <div *ngIf="isPermitted(SendMessage) || isAdministrator()" class="container con3">
+        <form [formGroup]="messageForm" class="pt-3"  (ngSubmit)="onSubmit()">
+            <table width="100%">
+                <tr>
+                    <td width="85%">
+                        <div class="form-inline ">
+                            <input formControlName="text" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Tap your message here ...">
+                        </div>
+                    </td>
+                    <td width="10%">
+                        <div class="form-inline ">
+                            <button type="submit" [disabled]="!messageForm.valid" class="m-3 btn btn-success">Send</button> 
+                         </div>
+                    </td>
+                </tr>
+            </table>
+
+
+               
+         </form>
+    </div>
+
+
+</div>

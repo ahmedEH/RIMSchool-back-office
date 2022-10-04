@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="text-center">{{title}}</h1>
+    <div *ngIf="submitted" class="alert">
+        <div *ngIf="isError()" class="alert alert-danger">Failed to add user</div>
+        <div *ngIf="!isError()" class="alert alert-success">Cycle added successfully</div>
+    </div>
+    <form [formGroup]="cycleForm" class="pt-3"  (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label style="text-align: left;display: block;"for="exampleInputEmail1">Name</label>
+            <input formControlName="name" value="{{name}}" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter name">
+        </div>
+        <div class="form-group p-3 m-3">
+            <a class="btn btn-warning m-3" (click)="back()">Go back</a>
+            <button [disabled]="!cycleForm.valid" type="submit" class="m-3 btn btn-success">Save Cycle</button> 
+         </div>
+           
+     </form>
+</div>

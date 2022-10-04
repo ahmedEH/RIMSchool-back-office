@@ -1,0 +1,64 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div style="height:100vh;"class="left col-4 p-3 text-center">
+            <div style="position:relative;top: 35%;">
+                <div>
+                    <img src="assets/logo.png" alt="">
+                </div>
+                <h1>
+                    {{title}}
+                </h1>
+                <p>
+                    {{description}}
+                </p>
+            </div>
+
+
+        </div>
+        <div style="float: right;height: 100vh;"class="right col-8 p-3 text-center">
+            <div style="position: relative;top: 35%;left:0%" y>
+                <div *ngIf="error" class="alert alert-danger">Username or password incorrect </div>
+                <div *ngIf="!activated" class="alert alert-danger">You are not activated please contact your admin</div>
+                <form class="pt-3"  (ngSubmit)="onSubmit()" [formGroup]="loginRequest">
+                    <div class="form-group py-2">
+                        <div class="input-field"> <span class="far fa-user p-2"></span> <input type="text" name = "login"placeholder="Username or Email Address" required class="" formControlName="login"> </div>
+                    </div>
+                    <div *ngIf="loginRequest.controls['login'].invalid && (loginRequest.controls['login'].dirty ||loginRequest.controls['login'].touched)"
+                            class="alert alert-danger">
+            
+                        <div *ngIf="loginRequest.controls['login'].errors?.['required']">
+                            login is required.
+                        </div>
+                        <div *ngIf="loginRequest.controls['login'].errors?.['minlength']">
+                            login must be at least 8 characters long.
+                        </div>
+            
+                    </div>
+                    <div class="form-group py-1 pb-2">
+                        <div class="input-field"> <span class="fas fa-lock p-2"></span> <input [type]="type" placeholder="Enter your Password" required class="" formControlName="password"> <span [ngClass]="{'fas fa-eye-slash':isPassword(),'fa fa-eye':isText()}"(click)="onSwitch()"></span></div>
+                    </div>
+                    <div *ngIf="loginRequest.controls['password'].invalid && (loginRequest.controls['password'].dirty ||loginRequest.controls['password'].touched)"
+                        class="alert alert-danger">
+            
+                        <div *ngIf="loginRequest.controls['password'].errors?.['required']">
+                            login is required.
+                        </div>
+                        <div *ngIf="loginRequest.controls['password'].errors?.['minlength']">
+                            login must be at least 8 characters long.
+                        </div>
+            
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
+                    </div> <button  type="submit"class="btn  text-center "[disabled]="!loginRequest.valid">Log in</button>
+                    <div class="form-group py-1 pb-2">
+            
+                    </div>
+                </form>
+            </div>
+
+        
+        </div>
+    </div>
+</div>

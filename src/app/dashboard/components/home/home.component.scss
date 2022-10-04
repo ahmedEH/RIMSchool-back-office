@@ -1,0 +1,19 @@
+.container-fluid{
+    text-align: center;
+    height: 100vh;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.container-fluid p{
+    font-size: larger;
+    font-size: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    line-height: 200%;
+}

@@ -1,0 +1,25 @@
+<div style="height:100%" class="container">
+    <div class="container" style="display: inline-block;">
+        <h1 class="text-center d-inline">Matters {{cycle?.name}} -- {{faculty?.name}} -- {{level?.name}}</h1>
+        <mat-icon style="float: right;" *ngIf="isPermitted(AddMatter) || isAdministrator()" [routerLink]="['/level/add-matter',levelId]">add_circle_outline</mat-icon>
+        
+    </div>
+
+    <div class="container">
+        <br/>
+            <div *ngFor="let matter of matters"  class="row border border-success rounded m-3"  >
+                <div class="col"><h1 style="font-size:xx-large;" class="text-couleur m-3">{{matter.name}} </h1> </div>                  
+                <div  class=" col text-right">
+                    <div class="comp my-3" style="text-align: right;">
+                        <mat-icon *ngIf="isPermitted(DeleteMAtter) || isAdministrator()" (click)="deleteMatter(matter.id)"class="text-danger mx-3" style="font-size:xx-large;">delete</mat-icon>
+                        <mat-icon *ngIf="isPermitted(UpdateMatter) || isAdministrator()" [routerLink]="['/matter/edit',matter.id]" class = "text-primary mx-3" style="font-size:xx-large;">edit</mat-icon>
+                        <mat-icon *ngIf="isPermitted(SeeContent) || isAdministrator()" class="text-success mx-3" style="font-size:xx-large;" [routerLink]="['/cycle',cycleId,'faculty',facultyId,'level',levelId,'matter',matter.id]">remove_red_eye</mat-icon>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+  
+    
+</div>

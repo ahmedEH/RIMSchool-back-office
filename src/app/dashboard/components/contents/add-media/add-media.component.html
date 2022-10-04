@@ -1,0 +1,27 @@
+
+<div class="container"><br/><br/><br/>
+    <h1 class="text-center">Add media to <b>{{matterI?.name}}</b></h1>
+    <div *ngIf="submitted" class="alert">
+        <div *ngIf="isError()" class="alert alert-danger text-center">Failed to add user</div>
+        <div *ngIf="!isError()" class="alert alert-success text-center">Media added successfully</div>
+    </div>
+    <form [formGroup]="mediaForm" class="pt-3"  (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label style="text-align: left;display: block;"for="exampleInputEmail1">Name</label>
+            <input formControlName="title" type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label style="text-align: left;display: block;"for="exampleInputEmail1">File</label>
+            <input type="file" formControlName="file" class="form-control" accept="image/*, application/*" aria-describedby="emailHelp" placeholder="Enter file" (change)="onFileChange($event)" required = "required"><br>
+            <div *ngIf="!acceptUpload" class="alert alert-danger text-center">Error we accept only images and documents</div>
+        </div>
+        <div class="form-group p-3 m-3">
+
+                    <button type="submit" class="btn btn-success" [disabled]="!mediaForm.valid || acceptUpload != true">Save media</button> 
+
+            
+         </div>
+           
+     </form>
+</div>

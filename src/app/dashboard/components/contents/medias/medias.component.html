@@ -1,0 +1,27 @@
+
+<div class="container">
+
+  <div class="card m-3" style="width: 75%" *ngFor="let photo of photos">
+    <img class="card-img-top" src="{{photo.path?.replace('localhost','192.168.11.102')}}" alt="Card image cap">
+    <div class="card-body text-center">
+      <div class="row">
+        <div class="col">
+          <h2 style="text-align: left;" class="card-title">{{photo.title}}</h2>
+          <h5 style="text-align: left;" class="card-subtitle">{{photo.created_at | date}}</h5>
+        </div>
+        <div class="col">
+          <a href="{{photo.path?.replace('localhost','192.168.11.102')}}" class="btn m-3 btn-primary">View</a>
+          <a class="btn btn-danger" *ngIf="isPermitted(DeleteMedia) || isAdministrator()" (click)="deleteMedia(photo.id)">Delete</a>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+</div>
+
+
+
