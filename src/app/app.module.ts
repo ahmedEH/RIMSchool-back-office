@@ -31,6 +31,7 @@ import { BackButtonDirective } from './directives/back-button.directive';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { MessagesComponent } from './dashboard/components/messages/messages.component';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 
 
@@ -73,7 +74,8 @@ import { MessagesComponent } from './dashboard/components/messages/messages.comp
     MatTabsModule,
     DashboardModule,
     MatSlideToggleModule,
-    CommonModule
+    CommonModule,
+    
 
 
 

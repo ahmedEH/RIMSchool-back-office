@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://192.168.11.102:8081/schoolroom/"
+  apiUrl: "http://192.168.31.6:8081/schoolroom/"
 };
 
 /*

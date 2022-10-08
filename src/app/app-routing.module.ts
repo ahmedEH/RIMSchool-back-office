@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PermissionType } from './enumerations/permissionType';
 import { IndexComponent } from './index/index.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -14,7 +15,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate:[AuthGuardService]
+    canActivate:[AuthGuardService],
+    data:{roles:PermissionType.Home}
   },
   // {
   //   path:'not-found',

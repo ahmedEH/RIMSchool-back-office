@@ -22,6 +22,8 @@ import { AddPostComponent } from './components/contents/add-post/add-post.compon
 import { DocsComponent } from './contents/docs/docs.component';
 import { HistoryComponent } from './components/history/history.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { AuthGuardService } from '../services/auth-guard.service';
+import { PermissionType } from '../enumerations/permissionType';
 
 const routes: Routes = [
   // Sidenavwrapper Component acts like a shell & the active child Component gets rendered into the <router-outlet>
@@ -33,122 +35,170 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeUsers}
       },
       {
         path: 'home',
         component: HomeComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.Home}
       },
       {
         path: 'add-user',
         component: AddUserComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddUser}
       },
       {
         path: 'cycles',
         component: CyclesComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeCycles}
       },
       {
         path: 'add-cycle',
         component: AddCycleComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddCycle}
       },
       {
         path: 'messages',
         component: MessagesComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeMessages}
       },
       {
         path: 'history',
         component: HistoryComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeHistory}
       },
       {
         path: 'cycles/:id',
         component: FacultiesComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeFaculties}
       },
       {
         path: 'cycle/add-faculty/:id',
         component: AddFacultyComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddFaculty}
       },
       {
         path: 'faculties/:id',
         component: FacultiesComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeFaculties}
       },
       {
         path: 'cycle/:cycle/faculty/:faculty',
         component: LevelsComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeLevels}
       },
       {
         path: 'cycle/:cycle/faculty/:faculty/level/:level',
         component: MattersComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeMatters}
       },
       {
         path: 'faculty/add-level/:id',
         component: AddLevelComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddLevel}
       },
       {
         path: 'level/add-matter/:id',
         component: AddMatterComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddMatter}
       },
       {
         path: 'cycle/:cycle/faculty/:faculty/level/:level/matter/:matter',
         component: MediasAndPostsComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeContent}
       },
       {
         path: 'cycle/:cycle/faculty/:faculty/level/:level/matter/:matter/medias',
         component: MediasComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeMedias}
       },
       {
         path: 'cycle/:cycle/faculty/:faculty/level/:level/matter/:matter/docs',
         component: DocsComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeeMedias}
       },
       {
         path: 'cycle/:cycle/faculty/:faculty/level/:level/matter/:matter/posts',
         component: PostsComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.SeePosts}
       },
       {
         path: 'matter/add-media/:id',
         component: AddMediaComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddMedia}
       },
       {
         path: 'matter/add-post/:id',
         component: AddPostComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddPost}
       },
       {
         path: 'matter/edit/:matter',
         component: AddMatterComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddMatter}
       },
       {
         path: 'level/edit/:level',
         component: AddLevelComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddLevel}
       },
       {
         path: 'faculty/edit/:faculty',
         component: AddFacultyComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddFaculty}
       },
       {
         path: 'cycle/edit/:cycle',
         component: AddCycleComponent,
-        pathMatch:'full'
+        pathMatch:'full',
+        canActivate:[AuthGuardService],
+        data:{roles:PermissionType.AddCycle}
       },
     ]
   },
