@@ -177,28 +177,28 @@ const routes: Routes = [
         component: AddMatterComponent,
         pathMatch:'full',
         canActivate:[AuthGuardService],
-        data:{roles:PermissionType.AddMatter}
+        data:{roles:PermissionType.UpdateMatter}
       },
       {
         path: 'level/edit/:level',
         component: AddLevelComponent,
         pathMatch:'full',
         canActivate:[AuthGuardService],
-        data:{roles:PermissionType.AddLevel}
+        data:{roles:PermissionType.UpdateLevel}
       },
       {
         path: 'faculty/edit/:faculty',
         component: AddFacultyComponent,
         pathMatch:'full',
         canActivate:[AuthGuardService],
-        data:{roles:PermissionType.AddFaculty}
+        data:{roles:PermissionType.UpdateFaculty}
       },
       {
         path: 'cycle/edit/:cycle',
         component: AddCycleComponent,
         pathMatch:'full',
         canActivate:[AuthGuardService],
-        data:{roles:PermissionType.AddCycle}
+        data:{roles:PermissionType.UpdateCycle}
       },
     ]
   },
