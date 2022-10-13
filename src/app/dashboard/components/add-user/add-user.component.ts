@@ -97,9 +97,19 @@ export class AddUserComponent implements OnInit {
     return this.error === true;
   }
   select(i:number){
-    this.permissionClass[i] = 'btn btn-primary m-3'
-    this.permissionClicked.push(this.permissions[i]);
-    console.log("permissionClicked",this.permissionClicked)
+    if(this.permissionClass[i] == 'btn btn-primary m-3'){
+      this.permissionClass[i] = 'btn btn-secondary m-3'
+      this.permissionClicked = this.permissionClicked.filter(p => p.id != this.permissions[i].id)
+      // if(this.permissionClicked.length ==1){
+      //   this.permissionClicked.pop();
+      // }
+
+    }else{
+      this.permissionClass[i] = 'btn btn-primary m-3'
+      this.permissionClicked.push(this.permissions[i]);
+    }
+
+    console.log("permissionClicked",this.permissionClicked);
 
   }
   isPassword(){

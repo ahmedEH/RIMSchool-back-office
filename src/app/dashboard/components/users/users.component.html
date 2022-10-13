@@ -12,10 +12,11 @@
             <td>{{ user.user?.state}}<mat-slide-toggle [disabled]="user.user?.role == 'Administrator' || user.user?.role == 'Android'" (toggleChange)="toggle(user.user?.id)" [checked]="user.user?.state == 'Activated'"></mat-slide-toggle></td>
             <td>{{ user.user?.tel}}</td>
             <td>{{ user.user?.email}}</td>
-            <td>
-                <ul class="list-group">
-                    <li *ngFor="let permission of user.permissions" class="list-group-item">{{permission.name}}</li>
-                </ul>
+            <td width="15%">
+                <mat-chip-list class="text-center" aria-label="Permissions">
+                    <mat-chip *ngFor="let permission of user.permissions">{{ permission.name }}</mat-chip>
+        
+                  </mat-chip-list>
     
             </td>
         </tr>

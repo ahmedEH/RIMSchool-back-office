@@ -1,3 +1,15 @@
-<div class="container-fluid">
-    <p>Welcome here to enjoy working </p>
+
+<div class="container-fluid text-center">
+    <img src="../../../../assets/unknown.png" alt="">
+    <h1 class="text-center">Welcome {{ user?.name }} the {{ user?.role}} user</h1>
+    <h2 class="text-center">Username : {{user?.login}}</h2>
+    <h2 class="text-center">Email : {{ user?.email}}</h2>
+    <h2 class="text-center"> Phone number : {{user?.tel}}</h2>
+    <h2 class="text-center">Your state : {{ user?.state }}</h2>
+    <div class="container text-center" *ngIf="user?.role == 'Simple'">
+        <mat-chip-list class="text-center" aria-label="Permissions">
+            <mat-chip *ngFor="let permission of permissions">{{ permission.name }}</mat-chip>
+
+          </mat-chip-list>
+    </div>
 </div>

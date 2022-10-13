@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,7 @@ import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-to
 import { CommonModule } from '@angular/common';
 import { MessagesComponent } from './dashboard/components/messages/messages.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -74,8 +75,9 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     MatTabsModule,
     DashboardModule,
     MatSlideToggleModule,
+    MatChipsModule,
     CommonModule,
-    
+
 
 
 
@@ -88,6 +90,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
     MenuService,
     UserService,
     SharedService,
+
   ],
   bootstrap: [AppComponent]
 })
